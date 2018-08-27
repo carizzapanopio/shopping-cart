@@ -7,10 +7,16 @@ export class AppGlobals {
   // readonly baseAppUrl: string = 'http://localhost:57431/';
   // readonly baseAPIUrl: string = 'https://api.github.com/';
   readonly productImage = './assets/product-default.png';
-  cart : Cart;
+  cart : Cart = new Cart;
+  item : Item = new Item;
 
-  addToCart(product: Product): void{
-  	
-    console.log(this.cart.items);
+  addToCart(id:number): void {
+  	this.item.productId = id;
+  	this.item.quantity = 1;
+  	if(!this.cart.items) {
+  		this.cart.items = [];
+  	}
+    this.cart.items.push(this.item);
+    // console.log(this.cart);
   }
 }

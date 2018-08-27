@@ -21,6 +21,7 @@ import { AppGlobals } from '../global';
 export class CartItemComponent implements OnInit {
 	product: Product;
   item: Item;
+  cart: Cart;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +30,7 @@ export class CartItemComponent implements OnInit {
     private _global: AppGlobals) { }
 
   ngOnInit() {
+    console.log(this._global.cart);
   }
 
   addItem(): void{

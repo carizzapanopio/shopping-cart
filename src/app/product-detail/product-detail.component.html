@@ -2,4 +2,5 @@
 	<img class="product" [src]="productImage"/>
 	<p>{{ product.id }}: {{ product.name }}</p>
 	<a routerLink="/products">Back</a>
+	<a routerLink="/cart/items/{{product.id}}" (click)="_global.addToCart(product.id)">Add to cart</a>
 </div>
