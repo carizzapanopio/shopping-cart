@@ -1,0 +1,5 @@
+<div *ngIf="product">
+	<img class="product" [src]="productImage"/>
+	<p>{{ product.id }}: {{ product.name }}</p>
+	<a routerLink="/products">Back</a>
+</div>

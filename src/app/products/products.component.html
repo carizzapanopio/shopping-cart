@@ -1,0 +1,16 @@
+<!-- <h2>{{product.name}} Details</h2>
+<div><span>id: </span>{{product.id}}</div>
+<div><span>name: </span>{{product.name}}</div>
+ -->
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-4" *ngFor="let product of products">
+			<img class="product" [src]="productImage"/>
+			<p><a routerLink="/products/{{product.id}}">{{ product.id }}: {{ product.name }}</a></p>
+			<a routerLink="/products/{{product.id}}">View Details</a> | 
+			<a  (click)="_global.addToCart(product)">Add to cart</a>
+		</div>
+	</div>
+</div>
+<app-product-detail [product]="selectedProduct"></app-product-detail>
