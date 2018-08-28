@@ -1,3 +1,7 @@
-<p>
-  cart works!
-</p>
+<div *ngFor="let item of cart.items">
+	<img class="product" [src]="productImage" height="200px"/>
+	<a routerLink="/products/{{item.productId}}">{{ productService.getProduct(item.productId).name }}</a>
+	<input type="number" min=1 [(ngModel)]="item.quantity" >
+	
+</div>
+<a>Checkout</a>

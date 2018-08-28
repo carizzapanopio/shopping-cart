@@ -1,6 +1,8 @@
 <div *ngIf="product">
-	<img class="product" [src]="productImage"/>
+	<img class="product" [src]="productImage" height="300px"/>
 	<p>{{ product.id }}: {{ product.name }}</p>
-	<a routerLink="/products">Back</a>
-	<a routerLink="/cart/items/{{product.id}}" (click)="_global.addToCart(product.id)">Add to cart</a>
+	<input type="number" min=1 [(ngModel)]="item.quantity" >
+	<a routerLink="/products">Back</a> | 
+	<a routerLink="/cart/items/{{product.id}}" (click)="globalService.addToCart(product.id,item.quantity)">Add to cart</a>
 </div>
+<!-- [(ngModel)]="currency.code" -->

@@ -1,3 +1,9 @@
-<p>
-  cart-items works!
-</p>
+<div *ngIf="product">
+	<img class="product" [src]="productImage" height="300px"/>
+	<p>{{ product.id }}: {{ product.name }} x <input type="number" min=1 [(ngModel)]="item.quantity" ></p>
+	<a routerLink="/products/{{product.id}}">Back</a> | 
+	<a routerLink="/cart">Cart</a> | 
+	<!-- <a routerLink="/checkout">Cart</a> |  -->
+
+	<!-- <a routerLink="/cart/items/{{product.id}}" (click)="globalService.addToCart(product.id,0)">Add to cart</a> -->
+</div>

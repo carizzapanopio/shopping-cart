@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
-import { Product } from '../product';
-import { Cart } from '../cart';
-import { Item } from '../item';
-
-
-import { ProductService }  from '../product.service';
-
-import { AppGlobals } from '../global';
+import { Product } from '../models/product';
+import { Cart } from '../models/cart';
+import { Item } from '../models/item';
+import { AppGlobals } from '../models/global';
+import { ProductService }  from '../services/product/product.service';
+import { GlobalService } from '../services/global/global.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -18,26 +14,41 @@ import { AppGlobals } from '../global';
   styleUrls: ['./cart-item.component.css'],
   providers: [ AppGlobals ]
 })
+
 export class CartItemComponent implements OnInit {
 	product: Product;
   item: Item;
   cart: Cart;
+  productImage: String;
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService,
     private location: Location,
+    private productService: ProductService,
+    private globalService: GlobalService, 
     private _global: AppGlobals) { }
 
   ngOnInit() {
-    console.log(this._global.cart);
+    // console.log(this.globalService.cart);
+    this.productImage = this._global.productImage;
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.product = this.productService.getProduct(id);
+    console.log(this.product);
+    this.getItem();
+    // console.log("hey");
+
   }
 
-  addItem(): void{
+  getItem() {
 
-  	const id = +this.route.snapshot.paramMap.get('id');
-  	this.product = this.productService.getProduct(id);
-    console.log(this.product);
+    console.log("get item"+ JSON.stringify(this.product));
+    this.item = this.globalService.searchItem(this.product.id);
+    console.log("searched item" + JSON.stringify(this.item));
+    // console.log(this.item);
+  }
+
+  	
+    // console.log(this.product);
 
 
   }

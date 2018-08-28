@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../product';
-import { ProductService } from '../product.service';
-import { AppGlobals } from '../global';
+import { Product } from '../models/product';
+import { AppGlobals } from '../models/global';
+import { ProductService } from '../services/product/product.service';
+import { GlobalService } from '../services/global/global.service';
 
 @Component({
   selector: 'app-products',
@@ -16,6 +17,7 @@ export class ProductsComponent implements OnInit {
 	productImage: string;
 
   constructor(private productService: ProductService, 
+              private globalService: GlobalService, 
               private _global: AppGlobals) { }
 
   ngOnInit() {
