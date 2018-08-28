@@ -45,7 +45,7 @@ export class CartItemComponent implements OnInit {
     this.item = this.globalService.searchItem(this.product.id);
     console.log("searched item" + JSON.stringify(this.item));
     // console.log(this.item);
-  }
+  
 
   	
     // console.log(this.product);

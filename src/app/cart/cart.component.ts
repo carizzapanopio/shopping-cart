@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Product } from '../models/product';
 import { Cart } from '../models/cart';
 import { Item } from '../models/item';
@@ -18,14 +20,29 @@ export class CartComponent implements OnInit {
   cart: Cart;
   productImage: String;
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location,
     private productService: ProductService,
     private globalService: GlobalService, 
     private _global: AppGlobals) { }
 
   ngOnInit() {
-    this.cart = this.globalService.cart;
-    this.products = this.productService.getProducts();
-    this.productImage = this._global.productImage;
+    if("checkout" === this.route.url._value[0].path){
+      if(! localStorage.getItem("user")){
+        this.router.navigate(['/login']);
+      }else{
+
+        this.cart = this.globalService.cart;
+        this.products = this.productService.getProducts();
+        this.productImage = this._global.productImage;  
+      }
+    }else{
+      this.cart = this.globalService.cart;
+      this.products = this.productService.getProducts();
+      this.productImage = this._global.productImage;  
+    }
+    
   }
 
 

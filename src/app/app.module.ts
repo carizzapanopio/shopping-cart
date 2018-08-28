@@ -8,6 +8,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartComponent } from './cart/cart.component';
 import { GlobalService } from './services/global/global.service';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { GlobalService } from './services/global/global.service';
     ProductsComponent,
     ProductDetailComponent,
     CartItemComponent,
-    CartComponent
+    CartComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

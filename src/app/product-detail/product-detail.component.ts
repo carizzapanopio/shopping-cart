@@ -23,9 +23,9 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
 	  private route: ActivatedRoute,
+    private location: Location,
 	  private productService: ProductService,
     private globalService: GlobalService, 
-	  private location: Location,
 	  private _global: AppGlobals ) { }
 
   ngOnInit() {
